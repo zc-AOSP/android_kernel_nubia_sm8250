@@ -3693,16 +3693,21 @@ static int stk_ps_tune_zero_func_fae(struct stk3x3x_data *stk_data)
 static void stk_ps_tune0_work_func(struct work_struct *work)
 {
 	struct stk3x3x_data *stk_data = container_of(work, struct stk3x3x_data, stk_ps_tune0_work);
-	if(stk_data->prox_debug)
+	if(stk_data->prox_debug) {
 		return;
+	}
 
-    if(stk_data->entry_suspend == true)
+    if(stk_data->entry_suspend == true) {
         return;
+	}
 
-	if(stk_data->tune_zero_init_proc)
+	if(stk_data->tune_zero_init_proc) {
 		stk_tune_zero_get_ps_data(stk_data);
-	else
+	}
+	else {
 		stk_ps_tune_zero_func_fae(stk_data);
+	}
+
 	return;
 }
 

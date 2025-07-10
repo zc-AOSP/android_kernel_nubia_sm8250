@@ -429,10 +429,12 @@ static ssize_t eeprom_calibration_store(struct kobject *kobj, struct kobj_attrib
 
 	cam_nubia_eeprom_lock_write();
 	camera_io_release(&eeprom_master_info);
-    if (ret < 0)
+    if (ret < 0) {
         bokeh_write = 0;
-    else
+	}
+    else {
         bokeh_write = 1;
+	}
 
 
 	return count;
